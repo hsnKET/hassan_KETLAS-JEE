@@ -400,6 +400,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Hassan KETLAS - h.ketlas_edu@enset-media.ac.ma
+Hassan KETLAS - h.ketlas_etu@enset-media.ac.ma
 
-Project Link: [https://github.com/hsnket/KETDI](https://github.com/hsnket/KETDI)
+Project Link: [https://github.com/hsnKET/hassan_KETLAS-JEE/tree/main/TP_2_Library_DI](https://github.com/hsnKET/hassan_KETLAS-JEE/edit/main/TP_2_Library_DI/)
