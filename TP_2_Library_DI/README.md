@@ -1,3 +1,6 @@
+
+[![GitHub:](https://img.shields.io/badge/license-MIT-brightgreen)](https://github.com/hsnKET/hassan_KETLAS-JEE/tree/main/TP_2_Library_DI)
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -94,7 +97,7 @@ Let take same example as in <a href="https://github.com/hsnKET/hassan_KETLAS-JEE
 ### Annotation
 
 
-<div align="center" style="background: aliceblue">
+<div align="center" style="background:aliceblue;">
   <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="./images/loose%20%20coupling.png" alt="Class diagram" >
   </a>
@@ -397,6 +400,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Hassan KETLAS - h.ketlas@enset-media.ac.ma
+Hassan KETLAS - h.ketlas_etu@enset-media.ac.ma
 
-Project Link: [https://github.com/hsnket/KETDI](https://github.com/hsnket/KETDI)
+Project Link: [https://github.com/hsnKET/hassan_KETLAS-JEE/tree/main/TP_2_Library_DI](https://github.com/hsnKET/hassan_KETLAS-JEE/edit/main/TP_2_Library_DI/)
