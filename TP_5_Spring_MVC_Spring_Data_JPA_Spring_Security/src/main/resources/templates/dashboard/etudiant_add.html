@@ -1,0 +1,113 @@
+<div class="content"
+	 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	 xmlns:th="http://www.thymeleaf.org"
+	 layout:decorate="dashboard"
+	 xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	 layout:fragment="body">
+    <div class="container">
+        <div class="page-title">
+            <h3>Etudiant</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div
+                            class="card-header">
+                        <!-- Title -->
+                        <span th:text="${formTitle}"/>
+                    </div>
+                    <div class="card-body">
+						<form method="post"
+							  th:action="@{/admin/etudiants/save(p=${currentPage},q=${nom},size=${size})}">
+							<div class="mb-3 row">
+								<label class="col-sm-2 form-label" for="nom">Nom</label>
+								<div class="col-sm-10">
+									<input th:value="${etudiant.nom}"
+										   type="text"
+										   class="form-control"
+										   id="nom"
+										   name="nom">
+									<div th:errors="${etudiant.nom}" class="invalid-feedback" style="display:block">
+
+									</div>
+								</div>
+							</div>
+							<div class="mb-3 row">
+								<label class="col-sm-2 form-label" for="nom">Prenom</label>
+								<div class="col-sm-10">
+									<input th:value="${etudiant.prenom}"
+										   type="text"
+										   class="form-control"
+										   name="prenom"
+										   id="prenom">
+									<div th:errors="${etudiant.prenom}" class="invalid-feedback" style="display:block">
+									</div>
+								</div>
+							</div>
+
+							<div class="mb-3 row">
+								<label class="col-sm-2 form-label" for="email">Email</label>
+								<div class="col-sm-10">
+									<input th:value="${etudiant.email}"
+										   name="email" type="email" class="form-control" id="email">
+									<div th:errors="${etudiant.email}" class="invalid-feedback" style="display:block">
+
+									</div>
+								</div>
+							</div>
+
+							<div class="mb-3 row">
+								<label class="col-sm-2">Date de naissance</label>
+								<div class="col-sm-10 select">
+									<input th:value="${etudiant.dateNaissance}"
+										   type="date"
+										   name="dateNaissance"
+										   class="form-control"
+										   placeholder="name@example.com">
+									<div th:errors="${etudiant.dateNaissance}" class="invalid-feedback" style="display:block">
+									</div>
+								</div>
+							</div>
+
+							<input type="hidden" name="active" th:value="${etudiant.active}">
+							<input type="hidden" name="id" th:value="${etudiant.id}">
+
+							<div class="mb-3 row">
+								<label class="col-sm-2 form-label" for="prenom">genre</label>
+								<div class="col-sm-10">
+
+									<select name="gener"
+											th:value="${etudiant.gener}"
+											class="form-select"
+											aria-label="Default select example">
+										<option value="FEMININ">FEMININ</option>
+										<option value="MASCULIN">MASCULIN</option>
+									</select>
+
+									<div th:errors="${etudiant.gener}" class="invalid-feedback" style="display:block">
+									</div>
+								</div>
+							</div>
+
+							<div class="mb-3 row">
+								<div class="col-2 offset-2">
+									<input type="submit" th:value="${formTitle}" class="btn btn-primary">
+
+								</div>
+
+								<div sec:authorize="hasAuthority('ADMIN')" th:if="${formTitle != 'Ajouter'}" class="col-2">
+									<input onclick="deleteEtudiant(event)" id="deleteEtu"
+										   th:attr="id=${etudiant.id},p=${currentPage},q='',size=${size}" type="button" value="Supprimer" class="btn btn-danger mr-4">
+								</div>
+
+							</div>
+						</form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,111 @@
+<div
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="dashboard"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+        layout:fragment="body">
+
+    <div class="page-title">
+        <h3>Etudiants</h3>
+
+        <div class="row">
+            <form  method="get"
+                   class="col-10"
+                   th:action="@{/user/etudiants(p=${currentPage},size=${size})}">
+                <div class="mb-3 row">
+
+                    <div class="col-sm-3">
+                        <input name="q" th:value="${nom}" type="text" class="form-control" id="nom" >
+                    </div>
+
+                    <div class="col-2">
+                        <input type="submit" th:value="Search" class="btn btn-primary">
+                    </div>
+                </div>
+
+            </form>
+            <div class="col-2">
+                <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/admin/etudiants/add(p=${currentPage},q=${nom},size=${size})}"
+                   class="btn btn-primary d-inline float-end">
+                    <i class="fas fa-plus"></i>
+                    Ajouter Etudiant
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="box box-primary">
+        <div class="box-body">
+            <div id="dataTables-example_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table width="100%" class="table table-hover dataTable no-footer dtr-inline"
+                               id="dataTables-example" role="grid" aria-describedby="dataTables-example_info"
+                               style="width: 100%;">
+                            <thead>
+                            <tr role="row">
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Email</th>
+                                <th>Date de naissance</th>
+                                <th>Gener</th>
+                                <th>Active</th>
+                                <th></th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr class="odd" th:each="etudiant:${etudiants}">
+                                    <td th:text="${etudiant.nom}"></td>
+                                    <td th:text="${etudiant.prenom}"></td>
+                                    <td th:text="${etudiant.email}"></td>
+                                    <td th:text="${etudiant.dateNaissance}"></td>
+                                    <td th:text="${etudiant.gener}"></td>
+                                    <td th:text="${etudiant.active? 'OUI':'NO'}"></td>
+                                    <td sec:authorize="hasAuthority('ADMIN')" class="text-end">
+                                        <a th:href="@{/admin/etudiants/edit(id=${etudiant.id},p=${currentPage},q=${nom},size=${size})}"
+                                           class="btn btn-outline-info btn-rounded">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                            </tbody>
+                        </table>
+
+                        <!--Pagination-->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+
+                                <li th:class="${currentPage < 1 ? 'page-item disabled' : 'page-item'}" >
+                                    <a class="page-link"
+                                       tabindex="-1"
+                                       aria-disabled="true"
+                                        th:href="@{/user/etudiants(p=${(currentPage - 1)},q=${nom},size=${size})}">
+                                        Previous
+                                    </a>
+                                </li>
+
+                                <li th:each="page,state:${pages}"
+                                        th:class="${currentPage == state.index ? 'page-item active':'page-item'}">
+                                    <a class="page-link"
+                                       th:href="@{/user/etudiants(p=${state.index},q=${nom},size=${size})}"
+                                       th:text="${state.index}"></a>
+                                </li>
+
+                                <li th:class="${currentPage >= (totalPage -1) ? 'page-item disabled' : 'page-item'}">
+                                    <a class="page-link" th:href="@{/user/etudiants(p=${(currentPage + 1)},q=${nom},size=${size})}">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    <!--End Pagination-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
