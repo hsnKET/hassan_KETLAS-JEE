@@ -3,8 +3,7 @@ package net.ketlas.studentspringmvc;
 import net.ketlas.studentspringmvc.entities.Etudiant;
 import net.ketlas.studentspringmvc.entities.Gener;
 import net.ketlas.studentspringmvc.repositories.EtudiantRepo;
-import net.ketlas.studentspringmvc.sec.entities.AppUser;
-import net.ketlas.studentspringmvc.sec.services.SecurityService;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -36,7 +35,7 @@ public class StudentSpringMvcApplication {
         };
     }
 
-    //@Bean
+    /*//@Bean
     CommandLineRunner saveUsers(SecurityService securityService){
         return args -> {
 
@@ -51,10 +50,10 @@ public class StudentSpringMvcApplication {
             securityService.addRoleToUser("admin","USER");
 
         };
-    }
+    }*/
 
-    @Bean
+    /*@Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
-    }
+    }*/
 }

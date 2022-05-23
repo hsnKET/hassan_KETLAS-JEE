@@ -12,11 +12,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
     @GetMapping("/users/{username}")
     User User(@PathVariable("username") String username){
         User user = userService.findUserByUserName(username);
-
         return user;
     }
 }
